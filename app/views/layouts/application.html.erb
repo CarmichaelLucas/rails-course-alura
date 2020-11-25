@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= nav_bar brand: "Loja", brand_link: root_url do %>
+      <%= menu_group do %>
+        <%= menu_item "Criar Produto", new_product_path %>
+        <%= menu_item "Departamentos", new_department_path %>
+      <% end %>
+
+      <div class="form-group">
+        <%= form_tag search_product_path, method: :get, class:"navbar-form navbar-right" do %>
+          <%= text_field_tag :name, @name, class:"form-control" %>
+          <%= button_to "Pesquisar", nil, class:"btn btn-default" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

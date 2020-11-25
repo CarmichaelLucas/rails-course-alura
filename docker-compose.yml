@@ -1,0 +1,14 @@
+version: '3'
+
+services: 
+  rails:
+    build: 
+      dockerfile: ./docker/rails.dockerfile
+      context: .
+    image: lucas/rails
+    volumes: 
+      - ./:/myapp
+    ports: 
+      - "3000:3000"
+    stdin_open: true
+    tty: true

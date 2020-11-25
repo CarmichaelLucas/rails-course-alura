@@ -1,0 +1,52 @@
+<% @product.errors.full_messages.each do |message| %>
+  <div class="alert alert-danger" role="alert">
+    <%= message %>
+  </div>
+<% end unless @product.nil? %>
+
+<%= form_for @product do |form| %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label I18n.t(:name) %>
+        <%= form.text_field :name, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <%= form.label I18n.t(:description) %>
+        <%= form.text_area :description, class:"form-control", rows:4 %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label :department %>
+        <%= form.collection_select :department_id, @departments, :id, :name, {}, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label I18n.t(:price) %>
+        <%= form.number_field :price, class:"form-control", step:0.01 %>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="form-group">
+        <%= form.label I18n.t(:quantity) %>
+        <%= form.number_field :quantity, class:"form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <%= form.submit "Ok, Enviar!", class:"btn btn-primary"  %>
+<% end %>

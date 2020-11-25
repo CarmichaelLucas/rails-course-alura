@@ -1,0 +1,10 @@
+<tr>
+  <td><%= product.name %></td>
+  <td><%= product.description %></td>
+  <td><%= product.department.name %></td>
+  <td><%= product.price %></td>
+  <td><%= product.quantity %></td>
+  <td><%= link_to "Editar", edit_product_path(product), class:"btn btn-warning" %></td>
+  <td><%= button_to "Remover", product, method: :delete, class:"btn btn-danger", 
+  data: {confirm: "Deseja realmente remover? #{product.name} "} %></td>
+</tr>
